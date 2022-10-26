@@ -21,6 +21,7 @@ public class test extends HttpServlet {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	String select = "select * from member where email = ?";
+
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("요청 수신");
@@ -34,9 +35,12 @@ public class test extends HttpServlet {
 			while(rs.next()) {
 				System.out.println(rs.getString(1));
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(rs, stmt, conn);
 		}
 	}
 
