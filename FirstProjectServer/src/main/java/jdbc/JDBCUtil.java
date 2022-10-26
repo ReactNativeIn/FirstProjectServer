@@ -9,8 +9,8 @@ import java.sql.SQLException;
 
 public class JDBCUtil {
 	public static Connection getConnection() {
-		String user = "scott";
-		String pass = "scott1234";
+		String user = "first";
+		String pass = "first";
 		
 		String url = "jdbc:mysql://127.0.0.1:3306/first?serverTimezone=Asia/Seoul&useSSL=false";
 		try {
