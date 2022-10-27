@@ -10,7 +10,7 @@ import jdbc.JDBCUtil;
 import vo.CommentService;
 import vo.CommentVO;
 
-public class CommentDAO implements CommentService {
+public class CommentDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
