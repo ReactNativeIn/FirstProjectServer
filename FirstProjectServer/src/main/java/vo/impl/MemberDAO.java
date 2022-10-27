@@ -18,7 +18,7 @@ public class MemberDAO {
 	private final String MEMBER_UPDATE = "update member set name = ?, birthday = ?, "
 			+ "nickname = ?, introduce = ?, phone = ?, profileImage = ?"
 			+ "where email = ?";
-	private final String MEMBER_DELETE = "delte member where email = ?";
+	private final String MEMBER_DELETE = "delete from member where email = ?";
 	private final String MEMBER_GET = "select * from member where email = ?";
 	private final String MEMBER_LIST = "select * from member";
 	
@@ -125,6 +125,7 @@ public class MemberDAO {
 				member.setGender(rs.getString("gender"));
 				member.setPhone(rs.getString("phone"));
 				member.setProfileImage(rs.getString("profileImage"));
+				memberList.add(member);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

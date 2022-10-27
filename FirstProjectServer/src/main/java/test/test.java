@@ -34,7 +34,6 @@ public class test extends HttpServlet {
 
 		member = service.getMember(member);
 		String result = objectMapper.writeValueAsString(member);
-		System.out.println(result);
 		response.getWriter().write(result);
 		System.out.println(result);
 	}
