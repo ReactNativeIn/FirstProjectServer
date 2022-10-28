@@ -11,14 +11,13 @@ public class FollowServiceImpl implements FollowService{
 	private FollowDAO followDAO = new FollowDAO();
 	
 	@Override
-	public void insertFollow(FollowVO vo) {
-		followDAO.insertFollow(vo);
-		
+	public Boolean insertFollow(FollowVO vo) {
+		return followDAO.insertFollow(vo);	
 	}
 
 	@Override
-	public void deleteFollow(FollowVO vo) {
-		followDAO.deleteFollow(vo);
+	public Boolean deleteFollow(FollowVO vo) {
+		return followDAO.deleteFollow(vo);
 	}
 
 	@Override

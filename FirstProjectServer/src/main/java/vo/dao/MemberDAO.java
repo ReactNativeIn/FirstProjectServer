@@ -144,7 +144,6 @@ public class MemberDAO {
 	
 	//회원 로그인
 	public MemberVO getMemberLogin(MemberVO vo) {
-		System.out.println("로그인");
 		MemberVO member = null;
 		try {
 			conn = JDBCUtil.getConnection();

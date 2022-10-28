@@ -15,7 +15,7 @@ public class CommentDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
-	private final String COMMENT_INSERT = "insert into comment values(?, ?, ?, ?, ?, ?)";
+	private final String COMMENT_INSERT = "insert into comment values(?, ?, ?, now(), ?, ?)";
 	private final String COMMENT_GET_POST_LIST = "select * from comment where postIndex = ?"; //특정 post 댓글들
 
 	//댓글 등록
@@ -27,9 +27,8 @@ public class CommentDAO {
 			stmt.setInt(1, vo.getCommentIndex());
 			stmt.setString(2, vo.getNickname());
 			stmt.setString(3, vo.getContent());
-			stmt.setDate(4, vo.getDate());
-			stmt.setString(5, vo.getEmail());
-			stmt.setInt(6, vo.getPostIndex());
+			stmt.setString(4, vo.getEmail());
+			stmt.setInt(5, vo.getPostIndex());
 			stmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();

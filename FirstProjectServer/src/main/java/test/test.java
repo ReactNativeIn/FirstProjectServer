@@ -42,18 +42,18 @@ public class test extends HttpServlet {
 //		response.getWriter().write(result);
 //		System.out.println(result);
 		
-		request.getParameterNames().asIterator()
-		.forEachRemaining(paramName -> json += ("\"" + paramName + "\"" + ":" + "\"" +request.getParameter(paramName) + "\"" + ","));
-		json = json.substring(0, json.length() - 14);
-		json += "}";
-
-		System.out.println("최종 : " + json);
-		System.out.println(request.getParameter("choice"));
-
-		MemberVO rMember = objectMapper.readValue(json, MemberVO.class);
-		
-		String result = objectMapper.writeValueAsString(rMember);
-		response.getWriter().write(result);
+//		request.getParameterNames().asIterator()
+//		.forEachRemaining(paramName -> json += ("\"" + paramName + "\"" + ":" + "\"" +request.getParameter(paramName) + "\"" + ","));
+//		json = json.substring(0, json.length() - 14);
+//		json += "}";
+//
+//		System.out.println("최종 : " + json);
+//		System.out.println(request.getParameter("choice"));
+//
+//		MemberVO rMember = objectMapper.readValue(json, MemberVO.class);
+//		
+//		String result = objectMapper.writeValueAsString(rMember);
+//		response.getWriter().write(result);
 		
 //		result = service.insertMember(rMember);
 //		String [] re = result.split(",");
@@ -61,6 +61,7 @@ public class test extends HttpServlet {
 //		String result = objectMapper.writeValueAsString(re);
 //		response.getWriter().write(result);
 //		System.out.println(result);
+		response.sendRedirect("/follow");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

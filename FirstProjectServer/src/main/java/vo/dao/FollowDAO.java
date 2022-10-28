@@ -21,40 +21,44 @@ public class FollowDAO {
 	private final String FOLLOW_GET_TO_MEMBER_LIST = "select * from follow where to_member = ?"; //팔로워(다른 사람이 날)
 	
 	//팔로우 등록
-	public void insertFollow(FollowVO vo) {
+	public Boolean insertFollow(FollowVO vo) {
 		System.out.println("팔로우 등록");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(FOLLOW_INSERT);
 			stmt.setString(1, vo.getFrom_member());
 			stmt.setString(2, vo.getTo_member());
-			stmt.executeUpdate();
+			if(stmt.executeUpdate() > 0 ) return true;
 		}catch(Exception e) {
+			System.out.println("팔로우 insert에러");
 			e.printStackTrace();
 		}finally {
 			JDBCUtil.close(stmt, conn);
 		}
+		return false;
 	}
 	
 	//팔로우 삭제
-	public void deleteFollow(FollowVO vo) {
+	public Boolean deleteFollow(FollowVO vo) {
 		System.out.println("팔로우 삭제");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(FOLLOW_DELETE);
 			stmt.setString(1, vo.getFrom_member());
 			stmt.setString(2, vo.getTo_member());
-			stmt.executeUpdate();
+			if(stmt.executeUpdate() > 0) return true;
 		}catch(Exception e) {
+			System.out.println("팔로우 delelte에러");
 			e.printStackTrace();
 		}finally {
 			JDBCUtil.close(stmt, conn);
 		}
+		return false;
 	}
 	
 	//팔로잉(내가 다른 사람을 팔로우)
 	public List<FollowVO> getFromFollowList(FollowVO vo) {
-		System.out.println("특정 회원이 올린 게시물들 조회");
+		System.out.println("팔로잉한 회원들의 정보");
 		List<FollowVO> followList = new ArrayList<FollowVO>();
 		try {
 			conn = JDBCUtil.getConnection();
@@ -78,7 +82,7 @@ public class FollowDAO {
 	
 	//팔로워(다른 사람이 날 팔로우)
 	public List<FollowVO> getToFollowtList(FollowVO vo) {
-		System.out.println("전체 게시물");
+		System.out.println("팔로워");
 		List<FollowVO> followList = new ArrayList<FollowVO>();
 		try {
 			conn = JDBCUtil.getConnection();

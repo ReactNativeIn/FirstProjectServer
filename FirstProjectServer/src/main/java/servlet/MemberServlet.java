@@ -19,12 +19,12 @@ public class MemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	ObjectMapper objectMapper = new ObjectMapper();
-	MemberServiceImpl service = new MemberServiceImpl();
-	MemberVO member = new MemberVO();
 	String json = "{";
-	String result = "";
 	int choice = 0;
 	
+	MemberServiceImpl service = new MemberServiceImpl();
+	MemberVO member = new MemberVO();
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("member 요청 수신 - service");
 		ServletUtil.setting(request, response);
@@ -44,11 +44,12 @@ public class MemberServlet extends HttpServlet {
 		
 		doGet(request, response);
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("member 요청 수신 - get");
 		String [] re;
 		String res;
+		String result = "";
 		
 		switch(choice) {
 			case 1: //회원가입
@@ -63,7 +64,7 @@ public class MemberServlet extends HttpServlet {
 				
 			case 2: //로그인
 				result = objectMapper.writeValueAsString(service.getMemberLogin(member));
-				
+
 				//응답
 				response.getWriter().write(result);
 				System.out.println("응답 : \n" + result);
