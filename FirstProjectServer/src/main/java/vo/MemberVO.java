@@ -10,6 +10,14 @@ public class MemberVO {
 	private String gender;
 	private String phone;
 	private String profileImage;
+	private String confirmPassword;
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	
 	public String getEmail() {
 		return email;
@@ -65,6 +73,7 @@ public class MemberVO {
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
 	}
+	
 	@Override
 	public String toString() {
 		return "Member [email=" + email + ", name=" + name + ", password=" + password + ", birthday=" + birthday
